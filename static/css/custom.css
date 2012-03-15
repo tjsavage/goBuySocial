@@ -1,0 +1,20 @@
+#background {
+    /*background: transparent url("https://a248.e.akamai.net/si.lscdn.net/deals/images/refresh/background-fade.png") repeat-x scroll left bottom;*/
+    min-height: 950px;
+    -moz-user-select: none;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.filled-row {
+    padding: 10px;
+    margin-bottom: 30px;
+    background-color: whiteSmoke;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}

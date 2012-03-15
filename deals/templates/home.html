@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head_js %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var expires = new Date({{ deal.expires_in_ms }});
+    $('#time_left').countdown({until: expires});
+});
+</script>
+{% endblock %}
+
+{% block head_css %}
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.countdown.css" />
+{% endblock %}
+
+{% block content %}
+<!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <div class="span3" style="padding-right:10px">
+            <div class="thumbnail">
+                <img src="/static/media/{{ deal.image }}" />
+            </div>
+        </div>
+        <h1>{{ deal.title }}</h1>
+        <p>{{ deal.description }}</p>
+        <p><div id="time_left"></div><a href="/{{ campus.shortname }}/{{ deal.pk }}/buy/" class="btn btn-success btn-large">Buy It - ${{ deal.price }} &raquo;</a></p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row filled-row">
+        <div class="span12">
+            <h1>Previous Deals</h1>
+        </div>
+        <div class="row">
+            {% for rd in recent_deals %}
+            <div class="span5">
+                <div class="span4">
+                    <div class="thumbnail">
+                        <img src="/static/media/{{ rd.image }}" />
+                    </div>
+                </div>
+                <div class="span4">
+                    <h2>{{ rd.title }}</h2>
+                </div>
+            <p style="margin-right:auto; margin-left:auto;"><a class="btn" href="/{{ campus.shortname }}/{{ rd.pk }}/">View details &raquo;</a></p>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+
+      <hr>
+{% endblock %}
+

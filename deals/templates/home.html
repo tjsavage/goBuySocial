@@ -23,7 +23,7 @@ $(document).ready(function() {
         </div>
         <h1>{{ deal.title }}</h1>
         <p>{{ deal.description }}</p>
-        <p><div id="time_left"></div><a href="{{ campus.shortname }}/{{ deal.pk }}/buy/" class="btn btn-success btn-large">Buy It - ${{ deal.price }} &raquo;</a></p>
+        <p><div id="time_left"></div><a href="{{ BASE_URL }}{{ campus.shortname }}/{{ deal.pk }}/buy/" class="btn btn-success btn-large">Buy It - ${{ deal.price }} &raquo;</a></p>
       </div>
 
       <!-- Example row of columns -->

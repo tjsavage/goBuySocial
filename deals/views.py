@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
+from django.template import RequestContext
 
 from deals.models import Campus, Deal
 
@@ -19,7 +20,8 @@ def home(request, campus_shortname=None):
                             {'campus':campus,
                             'campuses':campuses,
                             'deal':deal,
-                            'recent_deals':recent_deals})
+                            'recent_deals':recent_deals},
+                            context_instance=RequestContext(request))
 
 def deal(request, campus_shortname, deal_id):
     return HttpResponse("Hi")
@@ -30,7 +32,16 @@ def buy(request, campus_shortname, deal_id):
     
     return render_to_response('buy.html',
                             {'deal': deal, 
-                            'campus':campus,})
+                            'campus':campus,},
+                            context_instance=RequestContext(request))
+
+def about(request):
+    campuses = Campus.objects.all()
+    
+    return render_to_response('about.html',
+                            {'campuses':campuses,},
+                            context_instance=RequestContext(request)
+                            )
 
 def campus_from_shortname(campus_shortname):
     if campus_shortname == None:

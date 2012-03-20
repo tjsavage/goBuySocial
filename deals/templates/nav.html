@@ -4,8 +4,8 @@
           <a class="brand" href="#">GoBuySocial</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about/">About</a></li>
+              <li><a href="{{ BASE_URL }}">Home</a></li>
+              <li><a href="{{ BASE_URL }}/about/">About</a></li>
             </ul>
             <ul class="nav pull-right">
                 <li><a href="#">{{ campus.name }}</a></li>
@@ -13,7 +13,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Find Your School</a>
                     <ul class="dropdown-menu">
                         {% for campus in campuses %}
-                        <li><a href="/{{ campus.shortname }}/">{{ campus.name }}</a></li>
+                        <li><a href="{{ BASE_URL }}/{{ campus.shortname }}/">{{ campus.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>

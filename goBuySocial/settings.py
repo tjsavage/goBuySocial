@@ -63,7 +63,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static')
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
-BASE_URL = '/'
+BASE_URL = 'http://localhost:8000/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (

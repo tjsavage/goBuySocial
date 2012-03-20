@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 
 from deals.models import Campus, Deal
+from goBuySocial import settings
 
 def home(request, campus_shortname=None):
     campus = campus_from_shortname(campus_shortname)
@@ -21,7 +22,7 @@ def home(request, campus_shortname=None):
                             'campuses':campuses,
                             'deal':deal,
                             'recent_deals':recent_deals},
-                            context_instance=RequestContext(request))
+                            context_instance=RequestContext(request, {'BASE_URL': settings.BASE_URL,}))
 
 def deal(request, campus_shortname, deal_id):
     return HttpResponse("Hi")
@@ -33,15 +34,14 @@ def buy(request, campus_shortname, deal_id):
     return render_to_response('buy.html',
                             {'deal': deal, 
                             'campus':campus,},
-                            context_instance=RequestContext(request))
+                            context_instance=RequestContext(request, {'BASE_URL': settings.BASE_URL,}))
 
 def about(request):
     campuses = Campus.objects.all()
     
     return render_to_response('about.html',
                             {'campuses':campuses,},
-                            context_instance=RequestContext(request)
-                            )
+                            context_instance=RequestContext(request, {'BASE_URL': settings.BASE_URL, }))
 
 def campus_from_shortname(campus_shortname):
     if campus_shortname == None:

@@ -24,7 +24,7 @@ $(document).ready(function() {
         </div>
         <h1>{{ deal.title }}</h1>
         <p>{{ deal.description }}</p>
-        <p><div id="time_left"></div>{% include 'paypal_checkout_button.html' %}</p>
+        <p><div id="time_left"></div>{{ deal_form.render }}</p>
       </div>
 
       <!-- Example row of columns -->

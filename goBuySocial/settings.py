@@ -65,6 +65,8 @@ STATIC_URL = '/static/'
 
 BASE_URL = 'http://localhost:8000/'
 
+PAYPAL_RECEIVER_EMAIL = "seller_1333326312_biz@taylorsavage.com"
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -126,6 +128,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     #'south',
     'deals',
+    'paypal.standard.ipn',
     
 )
 

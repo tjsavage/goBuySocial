@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 
+from paypal.standard.ipn.signals import payment_was_successful
+
 def upload_dir(instance, filename):
     return "deals/%s/%d/%d/%s" % (instance.campus.shortname, datetime.datetime.now().year, datetime.datetime.now().month, filename)
     
@@ -61,8 +63,18 @@ class Purchase(models.Model):
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
     email = models.CharField(max_length=80)
+    purchase_complete = models.BooleanField(default=False)
     
     def __unicode__(self):
         return "%s bought %s on %s" % (self.email, str(self.deal), str(self.date_bought))
-    
-    
+
+def successful_payment(sender, **kwargs):
+    ipn_obj = sender
+    deal_pk = ipn_obj.custom
+    deal = Deal.objects.get(pk=deal_pk)
+    payer_email = ipn_obj.payer_email
+    purchase = Purchase(deal=deal, first_name=ipn_obj.first_name,
+                        last_name=ipn_obj.last_name,
+                        email=payer_email,
+                        purchase_complete=True)
+    purchase.save()

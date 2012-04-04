@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/$', 'deals.views.about'),
     url(r'^purchased/$', 'deals.views.purchased'),
-    url(r'^ipn_handler/$', 'deals.views.ipn_handler'),
+    url(r'^ipn_handler/$', include('paypal.standard.ipn.urls')),
     url(r'^(?P<campus_shortname>\w+)/', include('deals.urls')),
     
 

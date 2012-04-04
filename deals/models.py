@@ -79,4 +79,4 @@ def successful_payment(sender, **kwargs):
                         purchase_complete=True)
     purchase.save()
 
-payment_was_successful.connect(sucessful_payment)
+payment_was_successful.connect(successful_payment)

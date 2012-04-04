@@ -78,3 +78,5 @@ def successful_payment(sender, **kwargs):
                         email=payer_email,
                         purchase_complete=True)
     purchase.save()
+
+payment_was_successful.connect(sucessful_payment)

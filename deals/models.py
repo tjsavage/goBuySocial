@@ -87,7 +87,7 @@ def flagged_payment(sender, **kwargs):
     purchase = Purchase(deal=deal, first_name=ipn_obj.first_name,
                         last_name=ipn_obj.last_name,
                         email=payer_email,
-                        purchase_complete=True)
+                        purchase_complete=False)
     purchase.save()
     
 payment_was_successful.connect(successful_payment)

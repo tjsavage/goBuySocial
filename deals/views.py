@@ -3,10 +3,12 @@ import httplib2, urllib
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 
 from deals.models import Campus, Deal
 from goBuySocial import settings
 from paypal.standard.forms import PayPalPaymentsForm
+
 
 def home(request, campus_shortname=None):
     campus = campus_from_shortname(campus_shortname)

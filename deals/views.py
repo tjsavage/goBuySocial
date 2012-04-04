@@ -26,6 +26,7 @@ def home(request, campus_shortname=None):
         "business": "seller_1333326312_biz@taylorsavage.com",
         "amount": deal.price,
         "item_name": deal.title,
+        "custom": deal.pk,
         "notify_url": "http://www.gobuysocial.com/ipn_handler/",
         "return_url": "http://www.gobuysocial.com/purchased/",
         "cancel_return": "http://www.gobuysocial.com",

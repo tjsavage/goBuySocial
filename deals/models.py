@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 
-from paypal.standard.ipn.signals import payment_was_successful
+from paypal.standard.ipn.signals import payment_was_successful, payment_was_flagged
 
 def upload_dir(instance, filename):
     return "deals/%s/%d/%d/%s" % (instance.campus.shortname, datetime.datetime.now().year, datetime.datetime.now().month, filename)
@@ -79,4 +79,16 @@ def successful_payment(sender, **kwargs):
                         purchase_complete=True)
     purchase.save()
 
+def flagged_payment(sender, **kwargs):
+    ipn_obj = sender
+    deal_pk = ipn_obj.custom
+    deal = Deal.objects.get(pk=deal_pk)
+    payer_email = ipn_obj.payer_email
+    purchase = Purchase(deal=deal, first_name=ipn_obj.first_name,
+                        last_name=ipn_obj.last_name,
+                        email=payer_email,
+                        purchase_complete=True)
+    purchase.save()
+    
 payment_was_successful.connect(successful_payment)
+payment_was_flagged.connect(flagged_payment)

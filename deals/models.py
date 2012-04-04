@@ -44,7 +44,8 @@ class Campus(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=60)
     shortname = models.CharField(max_length=15)
-    image = models.ImageField(upload_to="campus")
+    background_image = models.ImageField(upload_to="campus")
+    thumbnail_image = models.ImageField(upload_to="campus")
     latitude = models.FloatField()
     longitude = models.FloatField()
     
@@ -53,4 +54,15 @@ class Campus(models.Model):
     
     def __unicode__(self):
         return "%s" % (self.name)
+
+class Purchase(models.Model):
+    deal = models.ForeignKey(Deal)
+    date_bought = models.DateTimeField(auto_now_add=True)
+    first_name = models.CharField(max_length=60)
+    last_name = models.CharField(max_length=60)
+    email = models.CharField(max_length=80)
+    
+    def __unicode__(self):
+        return "%s bought %s on %s" % (self.email, str(self.deal), str(self.date_bought))
+    
     

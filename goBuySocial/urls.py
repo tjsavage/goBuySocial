@@ -11,6 +11,8 @@ urlpatterns = patterns('',
     url(r'^$', 'deals.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^about/$', 'deals.views.about'),
+    url(r'^purchased/$', 'deals.views.purchased'),
+    url(r'^ipn_handler/$', 'deals.views.ipn_handler'),
     url(r'^(?P<campus_shortname>\w+)/', include('deals.urls')),
     
 

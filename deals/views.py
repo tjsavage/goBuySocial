@@ -1,3 +1,5 @@
+import httplib2, urllib
+
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.template import RequestContext
@@ -43,6 +45,19 @@ def about(request):
                             {'campuses':campuses,},
                             context_instance=RequestContext(request, {'BASE_URL': settings.BASE_URL, }))
 
+def purchased(request):
+    return HttpResponse("hello")
+
+def ipn_handler(request):
+    data = request.POST
+    print data
+    url = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_notify-validate&'
+    print url
+    u = urllib.urlopen(url)
+    response = u.read()
+    print response
+    return HttpResponse("Done")
+
 def campus_from_shortname(campus_shortname):
     if campus_shortname == None:
         campus = Campus.objects.get(name='Stanford')
@@ -51,3 +66,4 @@ def campus_from_shortname(campus_shortname):
         campus = Campus.objects.get(shortname=campus_shortname)
     
     return campus
+    

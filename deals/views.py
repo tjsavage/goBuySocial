@@ -17,7 +17,7 @@ def home(request, campus_shortname=None):
         deal = None
         recent_deals = None
     
-    return render_to_response('home.html',
+    return render_to_response('gb_home.html',
                             {'campus':campus,
                             'campuses':campuses,
                             'deal':deal,

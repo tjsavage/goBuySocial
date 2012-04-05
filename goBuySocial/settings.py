@@ -65,6 +65,8 @@ STATIC_URL = '/static/'
 
 BASE_URL = 'http://localhost:8000/'
 
+PAYPAL_RECEIVER_EMAIL = "seller_1333326312_biz@taylorsavage.com"
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -117,7 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
@@ -125,6 +127,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'deals',
+    'paypal.standard.ipn',
     
 )
 

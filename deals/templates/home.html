@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/paypal.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     var expires = new Date({{ deal.expires_in_ms }});
@@ -23,7 +24,7 @@ $(document).ready(function() {
         </div>
         <h1>{{ deal.title }}</h1>
         <p>{{ deal.description }}</p>
-        <p><div id="time_left"></div><a href="{{ BASE_URL }}{{ campus.shortname }}/{{ deal.pk }}/buy/" class="btn btn-success btn-large">Buy It - ${{ deal.price }} &raquo;</a></p>
+        <p><div id="time_left"></div>{{ deal_form.render }}</p>
       </div>
 
       <!-- Example row of columns -->

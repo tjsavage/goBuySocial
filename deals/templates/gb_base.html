@@ -33,10 +33,13 @@
         <div class="mailbox"></div>
         <div class="moneySavedBar"></div>
         <div class="sign"></div>
-        <div class="lightBoard"></div>
+        <div class="lightBoard">
+            {% block content %}
+            
+            {% endblock %}
+        </div>
         <div class="stanfordFlair"></div>
-    {% block content %}
-    {% endblock %}
+    
     </div>
     
   </body>

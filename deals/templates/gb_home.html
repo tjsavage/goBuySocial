@@ -1,5 +1,29 @@
 {% extends 'gb_base.html' %}
 
-{% block content %}
-
+{% block head_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/paypal.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var expires = new Date({{ deal.expires_in_ms }});
+    $('#time_left').countdown({until: expires});
+});
+</script>
 {% endblock %}
+
+{% block head_css %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.countdown.css" />
+{% endblock %}
+
+{% block content %}
+      {% if deal %}
+        <div class="span3" style="padding-right:10px">
+            <div class="thumbnail">
+                <img src="{{ STATIC_URL }}media/{{ deal.image }}" />
+            </div>
+        </div>
+        <h1>{{ deal.title }}</h1>
+        <p>{{ deal.description }}</p>
+        <p><div id="time_left"></div>{{ deal_form.render }}</p>
+      {% endif %}
+{% endblock %}
+

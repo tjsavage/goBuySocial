@@ -1,9 +1,12 @@
 import datetime
 from time import mktime
+import hashlib
 
 from django.db import models
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
+
+import goBuySocial.settings
 
 from paypal.standard.ipn.signals import payment_was_successful, payment_was_flagged
 
@@ -24,6 +27,7 @@ class Deal(models.Model):
     date_open = models.DateTimeField(auto_now_add=True)
     date_expires = models.DateTimeField()
     campus = models.ForeignKey('Campus')
+    hash = models.CharField(max_length=40, blank=True, null=True)
     added_by = models.ForeignKey(User)
     
     def expired(self):
@@ -37,6 +41,15 @@ class Deal(models.Model):
     
     def savings(self):  
         return self.full_price - self.price
+    
+    def save(self, *args, **kwargs):
+        super(Deal, self).save(*args, **kwargs)
+        if not self.hash:
+            m = hashlib.md5()
+            m.update(str(self.pk))
+            m.update(goBuySocial.settings.SECRET_KEY)
+            self.hash = m.hexdigest()
+        super(Deal, self).save(*args, **kwargs)
         
     def __unicode__(self):
         return "%s: %s" % (self.title, str(self.date_expires))

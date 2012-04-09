@@ -17,6 +17,7 @@ $(document).ready(function() {
 {% block content %}
 <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
+      {% if deal %}
         <div class="span3" style="padding-right:10px">
             <div class="thumbnail">
                 <img src="{{ STATIC_URL }}media/{{ deal.image }}" />
@@ -25,6 +26,7 @@ $(document).ready(function() {
         <h1>{{ deal.title }}</h1>
         <p>{{ deal.description }}</p>
         <p><div id="time_left"></div>{{ deal_form.render }}</p>
+      {% endif %}
       </div>
 
       <!-- Example row of columns -->

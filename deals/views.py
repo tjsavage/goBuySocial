@@ -21,16 +21,18 @@ def home(request, campus_shortname=None):
     else:
         deal = None
         recent_deals = None
-        
-    paypal_dict = {
-        "business": "seller_1333326312_biz@taylorsavage.com",
-        "amount": deal.price,
-        "item_name": deal.title,
-        "custom": deal.pk,
-        "notify_url": "http://www.gobuysocial.com/ipn_handler/",
-        "return_url": "http://www.gobuysocial.com/purchased/",
-        "cancel_return": "http://www.gobuysocial.com",
-    }
+    if deal:
+        paypal_dict = {
+            "business": "seller_1333326312_biz@taylorsavage.com",
+            "amount": deal.price,
+            "item_name": deal.title,
+            "custom": deal.pk,
+            "notify_url": "http://www.gobuysocial.com/ipn_handler/",
+            "return_url": "http://www.gobuysocial.com/purchased/",
+            "cancel_return": "http://www.gobuysocial.com",
+        }
+    else:
+        paypal_dict = None
     
     form = PayPalPaymentsForm(initial=paypal_dict)
     
@@ -77,6 +79,9 @@ def about(request):
 
 def purchased(request):
     return HttpResponse("hello")
+    
+def buyers(request, deal_hash):
+    return HttpResponse("hi")
 
 def ipn_handler(request):
     data = request.POST
@@ -96,4 +101,5 @@ def campus_from_shortname(campus_shortname):
         campus = Campus.objects.get(shortname=campus_shortname)
     
     return campus
+
     

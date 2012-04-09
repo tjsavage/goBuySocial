@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^purchased/$', 'deals.views.purchased'),
     url(r'^ipn_handler/$', include('paypal.standard.ipn.urls')),
     url(r'^(?P<campus_shortname>\w+)/', include('deals.urls')),
+    url(r'^buyers/(?P<deal_hash>\w+)/', 'deals.views.buyers'),
     
 
     # Uncomment the admin/doc line below to enable admin documentation:

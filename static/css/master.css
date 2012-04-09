@@ -1,0 +1,77 @@
+body {
+    background: #76c9ee;
+    background-image:url('images/clouds.png');
+    
+    margin: 0;
+    background-position: 55px 110px;
+    background-repeat: no-repeat;
+    
+}
+
+.container {
+    background-repeat: no-repeat;
+    position : relative;
+    width : 100%;
+    height : 100%;
+}
+
+.sign {
+    position: absolute;
+    background-image:url('images/sign.png');
+    background-position: 0px -540px;
+    background-repeat: no-repeat;
+    background-size : 600px;
+    margin: 0 0 0 530px;
+    width : 600px;
+    height : 170px;
+}
+
+.moneySavedBar {
+    position: absolute;
+    background-image:url('images/moneySavedBar.png');
+    background-repeat: no-repeat;
+    background-position: 0px 13px;
+    background-size: 360px;
+    margin: 0 0 0 241px;
+    width : 370px;
+    height : 160px;
+}
+
+.sign:hover {
+    /*background-position : 590px -100px;*/
+}
+
+.mailbox {
+    position: absolute;
+    background-image:url('images/mailbox.png');
+    background-repeat: no-repeat;
+    background-position: 0px -145px;
+    background-size: 145px;
+    margin: 0 0 0 106px;
+    width : 145px;
+    height : 180px;
+}
+
+.mailbox:hover {
+    background-image:url('images/mailboxOpen.png');
+}
+
+.lightBoard {
+    position: absolute;
+    background-image:url('images/lightBoard.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-size: 840px;
+    margin: 145px 0 0 180px;
+    width : 840px;
+    height : 532px;
+}
+
+.stanfordFlair {
+    background-image:url('images/stanfordFlair.png');
+    background-position: -30px 270px;
+    background-repeat: no-repeat;
+    background-size: 1160px;
+    width : 1160px;
+    height : 677px;
+}

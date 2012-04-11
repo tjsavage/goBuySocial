@@ -112,6 +112,7 @@ body {
 .deal_text {
     float: left;
     padding-left: 20px;
+    width: 320px;
 }
 
 .deal_text h1 {
@@ -123,7 +124,7 @@ body {
 }
 
 #buy_button {
-    padding-top: 50px;
+    padding-top: 10px;
     float: right;
 }
 

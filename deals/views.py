@@ -17,7 +17,7 @@ def home(request, campus_shortname=None):
     if saved.count():
         saved = saved[0]
     else:
-        saved = Saved(value=0)
+        saved = Saved(value=00.0)
     
     print saved.digits()
         

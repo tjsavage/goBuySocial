@@ -65,8 +65,24 @@ body {
     margin-left: 18px;
 }
 
-#saved_3 {
-    margin-left: 20px;
+#saved_1_over {
+    margin-left: 47px;
+}
+
+#saved_2_over {
+    margin-left: 94px;
+}
+
+#saved_3_over {
+    margin-left: 141px;
+}
+
+#saved_4_over {
+    margin-left: 188px;
+}
+
+#saved_5_over {
+    margin-left: 235px;
 }
 
 .sign:hover {

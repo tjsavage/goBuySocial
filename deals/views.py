@@ -18,9 +18,7 @@ def home(request, campus_shortname=None):
         saved = saved[0]
     else:
         saved = Saved(value=00.0)
-    
-    print saved.digits()
-        
+            
     deals = Deal.objects.filter(campus=campus).order_by("-date_expires")
     if deals.count() >= 1:
         deal = deals[0]
@@ -94,12 +92,9 @@ def buyers(request, deal_hash):
 
 def ipn_handler(request):
     data = request.POST
-    print data
     url = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_notify-validate&'
-    print url
     u = urllib.urlopen(url)
     response = u.read()
-    print response
     return HttpResponse("Done")
 
 def campus_from_shortname(campus_shortname):

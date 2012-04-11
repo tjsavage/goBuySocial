@@ -37,9 +37,11 @@
         <div class="mailbox"></div>
         <div class="moneySavedBar">
             <div class="saved">
+                <div id="saved_{{ starting_digit }}_over" >
                 {% for d in saved.digits %}
                     <div class="saved_digit" id="saved_{{ forloop.counter0|add:starting_digit }}">{{ d }}</div>
                 {% endfor %}
+                </div>
             </div>
         </div>
         <div class="sign">

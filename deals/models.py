@@ -80,6 +80,22 @@ class Purchase(models.Model):
     
     def __unicode__(self):
         return "%s bought %s on %s" % (self.email, str(self.deal), str(self.date_bought))
+    
+class Saved(models.Model):
+    value = models.DecimalField(max_digits=12, decimal_places=2)
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def digits(self):
+        str_value = str(self.value)
+        decimal_loc = str_value.find(".") if str_value.find(".") != -1 else len(str_value)
+        str_value = str_value[0:decimal_loc]
+        digits = []
+        for i, d in enumerate(str_value):
+            digits.append(d)
+        return digits
+    
+    def __unicode__(self):
+        return "%s: %s" % (str(self.date), str(self.value))
 
 def successful_payment(sender, **kwargs):
     ipn_obj = sender

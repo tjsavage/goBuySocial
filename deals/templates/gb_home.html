@@ -2,6 +2,7 @@
 
 {% block head_js %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/paypal.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.countdown.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     var expires = new Date({{ deal.expires_in_ms }});
@@ -11,19 +12,29 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block head_css %}
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.countdown.css" />
 {% endblock %}
 
 {% block content %}
       {% if deal %}
-        <div class="span3" style="padding-right:10px">
-            <div class="thumbnail">
-                <img src="{{ STATIC_URL }}media/{{ deal.image }}" />
+        <div class="deal_content">
+            <div class="row span7">
+                <div class="span3 deal_image" style="padding-right:10px">
+                    <div class="thumbnail">
+                        <img src="{{ STATIC_URL }}media/{{ deal.image }}" />
+                    </div>
+                </div>
+                <div class="span3 deal_text">
+                    <h1>{{ deal.title }}</h1>
+                    <p>{{ deal.description }}</p>
+                    <p><div id="time_left"></div></p>
+                    <div id="buy_button">
+                        <p>{{ deal_form.render }}</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <h1>{{ deal.title }}</h1>
-        <p>{{ deal.description }}</p>
-        <p><div id="time_left"></div>{{ deal_form.render }}</p>
       {% endif %}
 {% endblock %}
 

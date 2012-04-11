@@ -26,6 +26,17 @@ body {
     height : 170px;
 }
 
+.campus_thumbnail {
+    position: absolute;
+    left: 452px;
+    top: 57px;
+}
+
+.campus_thumbnail img {
+    max-width: 76px;
+    max-height: 70px;
+}
+
 .moneySavedBar {
     position: absolute;
     background-image:url('images/moneySavedBar.png');
@@ -35,6 +46,27 @@ body {
     margin: 0 0 0 241px;
     width : 370px;
     height : 160px;
+}
+
+.moneySavedBar .saved {
+    position: relative;
+    margin: 69px 0 0 39px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 27px;
+}
+
+.moneySavedBar .saved .saved_digit {
+    background-color: #eee;
+    padding: 7px 7px 7px 7px;
+    width: 15px;
+    height: 27px;
+    text-align: center;
+    float: left;
+    margin-left: 18px;
+}
+
+#saved_3 {
+    margin-left: 20px;
 }
 
 .sign:hover {
@@ -67,11 +99,50 @@ body {
     height : 532px;
 }
 
-.stanfordFlair {
-    background-image:url('images/stanfordFlair.png');
-    background-position: -30px 270px;
+.deal_content {
+    position: relative;
+    margin-left: 103px;
+    margin-top: 86px;
+}
+
+.deal_image {
+    float: left;
+} 
+
+.deal_text {
+    float: left;
+    padding-left: 20px;
+}
+
+.deal_text h1 {
+    #-webkit-text-stroke: 1px black;
+    #-webkit-text-fill-color: white;
+    color: black;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+}
+
+#buy_button {
+    padding-top: 50px;
+    float: right;
+}
+
+.thumbnail img {
+    padding-top: 20px;
+    max-height: 320px;
+    max-width: 280px;
+}
+
+.flair {
+    position: absolute;
+    background-position: -30px 870px;
     background-repeat: no-repeat;
     background-size: 1160px;
     width : 1160px;
     height : 677px;
+}
+
+.flair img {
+    position: absolute;
+    bottom: 0;
 }

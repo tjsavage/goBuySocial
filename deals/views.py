@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 
-from deals.models import Campus, Deal
+from deals.models import Campus, Deal, Saved
 from goBuySocial import settings
 from paypal.standard.forms import PayPalPaymentsForm
 
@@ -13,7 +13,14 @@ from paypal.standard.forms import PayPalPaymentsForm
 def home(request, campus_shortname=None):
     campus = campus_from_shortname(campus_shortname)
     campuses = Campus.objects.all()
+    saved = Saved.objects.all().order_by("-date")
+    if saved.count():
+        saved = saved[0]
+    else:
+        saved = Saved(value=0)
     
+    print saved.digits()
+        
     deals = Deal.objects.filter(campus=campus).order_by("-date_expires")
     if deals.count() >= 1:
         deal = deals[0]
@@ -41,6 +48,8 @@ def home(request, campus_shortname=None):
                             'campuses':campuses,
                             'deal':deal,
                             'deal_form':form,
+                            'saved': saved,
+                            'starting_digit': 6 - len(saved.digits()),
                             'recent_deals':recent_deals},
                             context_instance=RequestContext(request, {'BASE_URL': settings.BASE_URL,}))
 
